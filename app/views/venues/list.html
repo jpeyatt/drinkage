@@ -1,0 +1,34 @@
+<h1>Happy Hours</h1>
+
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Address</th>
+			<th>Mo</th>
+			<th>Tu</th>
+			<th>We</th>
+			<th>Th</th>
+			<th>Fr</th>
+			<th>Sa</th>
+			<th>Su</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="venue in venues">
+			<td><a href="#/venues/{{venue._id}}">{{venue.name}}</a></td>
+			<td>{{venue.street}}</td>
+			<td><i ng-show="isDayTrue(venue,'Monday')" class="fa fa-check" aria-hidden="true"></i></td>
+			<td><i ng-show="isDayTrue(venue,'Tuesday')" class="fa fa-check" aria-hidden="true"></i></td>
+			<td><i ng-show="isDayTrue(venue,'Wednesday')" class="fa fa-check" aria-hidden="true"></i></td>
+			<td><i ng-show="isDayTrue(venue,'Thursday')" class="fa fa-check" aria-hidden="true"></i></td>
+			<td><i ng-show="isDayTrue(venue,'Friday')" class="fa fa-check" aria-hidden="true"></i></td>
+			<td><i ng-show="isDayTrue(venue,'Saturday')" class="fa fa-check" aria-hidden="true"></i></td>
+			<td><i ng-show="isDayTrue(venue,'Sunday')" class="fa fa-check" aria-hidden="true"></i></td>
+			<td><a href="#/venues/edit/{{venue._id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+			<td><a href="javascript:void(0)" ng-click="deleteVenue(venue._id)" ><i class="fa fa-times" aria-hidden="true"></i></a></td>
+		</tr>
+	</tbody>
+</table>

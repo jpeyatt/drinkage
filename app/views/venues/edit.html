@@ -1,0 +1,129 @@
+	<!-- CREATE -->
+	<form>
+
+		<div class="row">
+			<div class="col-md-6">
+				<input type="text" name="venueName" placeholder="Venue Name" class="form-control" ng-model="editVenue.name" required> <br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<input type="text" name="street" placeholder="Street Address" class="form-control" ng-model="editVenue.street"> <br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<input type="text" name="street2" placeholder="Street Address (Line 2)" class="form-control" ng-model="editVenue.street2"> <br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3">
+				<input type="text" name="city" placeholder="City" class="form-control" ng-model="editVenue.city">
+			</div>
+			<div class="col-md-1">
+				<input type="text" name="state" placeholder="State" class="form-control" ng-model="editVenue.state">
+			</div>
+			<div class="col-md-2">
+				<input type="text" name="zip" placeholder="Zip" class="form-control" ng-model="editVenue.zip"> <br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 left">
+				<input type="text" name="website" placeholder="Website" class="form-control" ng-model="editVenue.website"> 
+			</div>
+		</div>
+
+		<hr>
+
+				<br><br>
+
+		<table class="table table-condensed">
+			<tr>
+				<th>Day</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Beer</th>
+				<th>Wine</th>
+				<th>Cocktails</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="day in editVenue.happyHours">
+				<td>{{day.day}}</td>
+				<td>{{day.startTime}}</td>
+				<td>{{day.endTime}}</td>
+				<td>{{day.beer}}</td>
+				<td>{{day.wine}}</td>
+				<td>{{day.cocktails}}</td>
+				<td>{{day.description}}</td>
+				<td><a href="javascript:void(0)" ng-click="removeHappyHour(day)"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+			</tr>
+		</table>
+
+		<p ng-show="editVenues.length == 0"><i>There are currently no Happy Hours.</i></p>
+
+		<hr>
+
+		<!-- Add Happy Hours -->
+
+		<div class="row">
+			<div class="col-md-2">
+				<select name="hhStartTime" class="form-control" ng-model="newHappyHour.day">
+						<option value="" disabled selected>Day</option>
+						<option ng-repeat="d in days" ng-value="d">{{d}}</option>
+				</select>
+			</div>
+			<div class="col-md-2">
+				<select name="hhStartTime" class="form-control" ng-model="newHappyHour.startTime">
+					<option value="" disabled selected>Start Time</option>
+					<option ng-repeat="t in times" ng-value="t.value">{{t.text}}</option>
+				</select>
+			</div>
+			<div class="col-md-2">
+				<select name="hhEndTime" class="form-control" ng-model="newHappyHour.endTime">
+					<option value="" disabled selected>End Time</option>
+					<option ng-repeat="t in times" ng-value="t.value">{{t.text}}</option>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<label for="hhBeer">Beer</label>
+				<input type="checkbox" name="hhBeer" ng-model="newHappyHour.beer">
+				&nbsp;&nbsp;
+				<label for="hhWine">Wine</label>
+				<input type="checkbox" name="hhWine" ng-model="newHappyHour.wine">
+				&nbsp;&nbsp;
+				<label for="hhCocktails">Cocktails</label>
+				<input type="checkbox" name="hhCocktails" ng-model="newHappyHour.cocktails">
+				<br><br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-9">
+				<textarea class="form-control" ng-model="newHappyHour.description" placeholder="{{hhDescriptionPlaceholder}}"></textarea>
+			</div>
+			<div class="col-md-2">
+				<button type="button" ng-click="addNewHappyHour()" class="btn btn-success">Add</button>
+			</div>
+		</div>
+
+		<!-- // Add Happy Hours -->
+		
+
+		<div class="row">
+			<div class="col-md-12">
+			<hr>
+				<button type="submit" class="btn btn-primary" ng-click="saveVenue()">Save</button>
+				<button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+			</div>
+		</div>
+		
+
+	</form>
+	<!-- // CREATE -->
+
+	{{resposne}}
