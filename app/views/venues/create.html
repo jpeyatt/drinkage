@@ -24,7 +24,10 @@
 				<input type="text" name="city" placeholder="City" class="form-control" ng-model="newVenue.city">
 			</div>
 			<div class="col-md-1">
-				<input type="text" name="state" placeholder="State" class="form-control" ng-model="newVenue.state">
+				<select name="state" class="form-control" ng-model="newVenue.state">
+						<option value="" disabled selected>State</option>
+						<option ng-repeat="s in states" ng-value="s">{{s}}</option>
+				</select>
 			</div>
 			<div class="col-md-2">
 				<input type="text" name="zip" placeholder="Zip" class="form-control" ng-model="newVenue.zip"> <br>

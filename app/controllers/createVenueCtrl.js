@@ -6,6 +6,7 @@
 			$scope.newHappyHours = [];
 			$scope.times = Common.times;
 			$scope.days = Common.days;
+			$scope.states = Common.states;
 			$scope.hhDescriptionPlaceholder = Common.hhDescriptionPlaceholder;
 
 			$scope.addNewHappyHour = function() {

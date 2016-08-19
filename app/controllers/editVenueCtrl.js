@@ -7,6 +7,7 @@
 			$scope.times = Common.times;
 			$scope.hhDescriptionPlaceholder = Common.hhDescriptionPlaceholder;
 			var venueId = $routeParams.id;
+			$scope.editVenue = {};
 
 			function getVenue() {
 				Venues.getVenue(venueId)
@@ -25,7 +26,6 @@
 
 			$scope.cancelEdit = function() {
 				$location.path('#/venues');
-		    	$scope.newVenue = {};
 			};
 
 			$scope.addNewHappyHour = function() {
@@ -37,9 +37,7 @@
 				var editedVenue = $scope.editVenue;
 				Venues.update(editedVenue)
 					.then(function(res){
-						//$location.path('#/venues');
-						console.log(res);
-						$scope.resposne = res;
+						$location.path('#/venues');
 					}, function(err){
 						console.log(err);
 					});

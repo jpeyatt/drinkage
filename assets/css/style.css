@@ -1,0 +1,10 @@
+.hhDayLabel {
+	font-size: 16px;
+	font-weight: 800;
+}
+.undeclared {
+	color: #888;
+}
+.declared {
+	color: #000;
+}

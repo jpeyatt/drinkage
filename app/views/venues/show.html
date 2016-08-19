@@ -1,8 +1,8 @@
 
-
-
-
-<div class="panel panel-default">
+<div class="row">
+    <div class="col-md-1"></div>     
+    <div class="col-md-10">
+        <div class="panel panel-default">
   <div class="panel-heading">
     <h2 class="panel-title">{{venue.name}}</h2>
   </div>
@@ -19,31 +19,36 @@
     
     <br><br>
     <table class="table">
-    	<tr>
-    		<th>Day</th>
-    		<th>Start Time</th>
-    		<th>End Time</th>
-    		<th>Beer</th>
-    		<th>Wine</th>
-    		<th>Cocktails</th>
-    		<th>Description</th>
-    	</tr>
-    	<tr ng-repeat="day in venue.happyHours">
-    		<td>{{day.day}}</td>
-    		<td>{{day.startTime}}</td>
-    		<td>{{day.endTime}}</td>
-    		<td>
+        <tr>
+            <th>Day</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Beer</th>
+            <th>Wine</th>
+            <th>Cocktails</th>
+            <th>Description</th>
+        </tr>
+        <tr ng-repeat="day in venue.happyHours">
+            <td>{{day.day}}</td>
+            <td>{{day.startTime}}</td>
+            <td>{{day.endTime}}</td>
+            <td>
                 <i ng-show="{{day.beer}}" class="fa fa-check" aria-hidden="true"></i>
             </td>
-    		<td>
+            <td>
                 <i ng-show="{{day.wine}}" class="fa fa-check" aria-hidden="true"></i>
             </td>
-    		<td>
+            <td>
                 <i ng-show="{{day.cocktails}}" class="fa fa-check" aria-hidden="true"></i>
             </td>
-    		<td>{{day.description}}</td>
-    	</tr>
+            <td>{{day.description}}</td>
+        </tr>
     </table>
 
   </div>
 </div>
+    </div> 
+    <div class="col-md-1"></div>    
+</div>
+
+

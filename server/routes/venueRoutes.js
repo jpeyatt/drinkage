@@ -52,7 +52,7 @@ module.exports = (function() {
 	// update venue
 	api.put('/venues/:venue_id', function(req, res){
 
-		Venue.findByIdAndUpdate(req.params.id, req.body, function(err, venue){
+		Venue.findByIdAndUpdate(req.params.venue_id, req.body, function(err, venue){
 			if (err)
 				res.send(err);
 
