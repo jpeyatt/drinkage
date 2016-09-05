@@ -8,3 +8,63 @@
 .declared {
 	color: #000;
 }
+
+
+#grid-cont {
+  background: #fafafa;
+  float: left;
+  height: 100%;
+  padding-bottom: 100px;
+  padding-left: 240px;
+  width: 100%;
+  transition: padding-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1479px) {
+  #grid-cont {
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  #grid-cont {
+    padding-bottom: 50px;
+  }
+}
+
+#grid-cont section.grid_outer {
+  margin: auto;
+  width: 1160px;
+  *zoom: 1;
+}
+
+
+@media screen and (max-width: 1240px) {
+  #grid-cont section.grid_outer {
+    width: 760px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  #grid-cont section.grid_outer {
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #grid-cont section.grid_outer {
+    width: 100%;
+  }
+}
+
+@media print {
+	#grid-cont {
+	    padding-left: 0;
+	    padding-top: 20px;
+  	}
+  #grid-cont section.grid_outer {
+    width: 100%;
+  }
+
+}

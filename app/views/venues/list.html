@@ -1,38 +1,53 @@
-<h1>Happy Hours</h1>
 
-<table class="table table-condensed">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Address</th>
-			<th>Mo</th>
-			<th>Tu</th>
-			<th>We</th>
-			<th>Th</th>
-			<th>Fr</th>
-			<th>Sa</th>
-			<th>Su</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="venue in venues">
-			<td><a href="#/venues/{{venue._id}}">{{venue.name}}</a></td>
-			<td>{{venue.street}}</td>
-			<td><i ng-show="isDayTrue(venue,'Monday')" class="fa fa-check" aria-hidden="true"></i></td>
-			<td><i ng-show="isDayTrue(venue,'Tuesday')" class="fa fa-check" aria-hidden="true"></i></td>
-			<td><i ng-show="isDayTrue(venue,'Wednesday')" class="fa fa-check" aria-hidden="true"></i></td>
-			<td><i ng-show="isDayTrue(venue,'Thursday')" class="fa fa-check" aria-hidden="true"></i></td>
-			<td><i ng-show="isDayTrue(venue,'Friday')" class="fa fa-check" aria-hidden="true"></i></td>
-			<td><i ng-show="isDayTrue(venue,'Saturday')" class="fa fa-check" aria-hidden="true"></i></td>
-			<td><i ng-show="isDayTrue(venue,'Sunday')" class="fa fa-check" aria-hidden="true"></i></td>
-			<td><a href="#/venues/edit/{{venue._id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-			<td><a href="javascript:void(0)" ng-click="deleteVenue(venue._id)" ><i class="fa fa-times" aria-hidden="true"></i></a></td>
-		</tr>
-	</tbody>
-</table>
 
-<div class="text-center">
-	<i ng-show="loading" class="fa fa-spinner fa-pulse fa-5x fa-fw" style="font-size: 70px;"></i>
+
+
+<md-list class="" flex>
+  <md-subheader class="md-no-sticky">Happy Hours</md-subheader>
+  <md-list-item class="md-3-line" ng-repeat="venue in venues" ng-click="venueClick(venue._id)">
+
+    <img ng-src="http://nightlifeco.com/bundles/nightlifeapi/img/beer_icon.png?20160112" class="md-avatar" />
+   
+      <div class="md-block" flex-gt-sm>
+        <div class="md-list-item-text" layout="column">
+          <h3>{{venue.name}}</h3>
+          <h4 hide-xs>{{venue.street}} {{venue.city}}</h4>
+          <p>M T Th Sa Su</p>
+
+  
+            <md-icon hide-sm hide-xs class="md-secondary" ng-click="editVenue(venue._id)" aria-label="Edit"><i class="material-icons">edit</i></md-icon>
+            <md-icon hide-sm hide-xs class="md-secondary" ng-click="deleteVenue($event,venue._id)" aria-label="Edit"><i class="material-icons">delete</i></md-icon>  
+        
+
+          <md-menu hide-gt-sm md-position-mode="target-right target" class="md-secondary">
+          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-menu-origin><i class="material-icons">more_vert</i></md-icon>
+          </md-button>
+          <md-menu-content width="4" >
+            <md-menu-item>
+              <md-button ng-click="editVenue(venue._id)">
+                  <div layout="row" flex>
+                    <md-icon md-menu-align-target style="margin: auto 3px auto 0;"><i class="material-icons">edit</i></md-icon> Edit
+                  </div>
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="deleteVenue($event,venue._id)">
+                  <div layout="row" flex>
+                    <md-icon md-menu-align-target style="margin: auto 3px auto 0;"><i class="material-icons">delete</i></md-icon> Delete
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+
+        </div>
+      </div>
+
+
+  </md-list-item>
+</md-list>
+
+<div layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-circular ng-show="loading" class="md-accent" md-mode="indeterminate"></md-progress-circular>
 </div>

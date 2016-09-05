@@ -1,44 +1,60 @@
-	<!-- CREATE -->
-	<form>
+<div layout-padding>
+<h2>Create new venue</h2>
 
-		<div class="row">
-			<div class="col-md-6">
-				<input type="text" name="venueName" placeholder="Venue Name" class="form-control" ng-model="newVenue.name" required> <br>
-			</div>
-		</div>
+<md-content>
+<form>
 
-		<div class="row">
-			<div class="col-md-6">
-				<input type="text" name="street" placeholder="Street Address" class="form-control" ng-model="newVenue.street"> <br>
-			</div>
-		</div>
+	<div layout="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<md-icon><i class="material-icons">business</i></md-icon>
+            <label>Venue Name</label>
+            <input ng-model="newVenue.name" ng-required="true">
+         </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+         	<md-icon><i class="material-icons">web</i></md-icon>
+            <label>Website</label>
+            <input ng-model="newVenue.website">
+         </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+         	<md-icon><i class="material-icons">phone</i></md-icon>
+            <label>Phone</label>
+            <input ng-model="newVenue.phone">
+         </md-input-container>
+	</div>
 
-		<div class="row">
-			<div class="col-md-6">
-				<input type="text" name="street2" placeholder="Street Address (Line 2)" class="form-control" ng-model="newVenue.street2"> <br>
-			</div>
-		</div>
+	<div layout="row">
+		<md-input-container class="md-block" flex-gt-sm>
+            <label>Street</label>
+            <input ng-model="newVenue.street">
+         </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>Street 2</label>
+            <input ng-model="newVenue.street2">
+         </md-input-container>
+         
+	</div>
 
-		<div class="row">
-			<div class="col-md-3">
-				<input type="text" name="city" placeholder="City" class="form-control" ng-model="newVenue.city">
-			</div>
-			<div class="col-md-1">
-				<select name="state" class="form-control" ng-model="newVenue.state">
-						<option value="" disabled selected>State</option>
-						<option ng-repeat="s in states" ng-value="s">{{s}}</option>
-				</select>
-			</div>
-			<div class="col-md-2">
-				<input type="text" name="zip" placeholder="Zip" class="form-control" ng-model="newVenue.zip"> <br>
-			</div>
-		</div>
+	<div layout="row">
+		<md-input-container class="md-block" flex-gt-sm>
+            <label>City</label>
+            <input ng-model="newVenue.city">
+         </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+            <md-select ng-model="newVenue.state">
+              <md-option ng-repeat="state in states" value="{{state}}">
+                {{state}}
+              </md-option>
+             </md-select>
+         </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>Zip</label>
+            <input ng-model="newVenue.zip">
+         </md-input-container>
+	</div>
 
-		<div class="row">
-			<div class="col-md-6 left">
-				<input type="text" name="website" placeholder="Website" class="form-control" ng-model="newVenue.website"> 
-			</div>
-		</div>
+
+
 
 		<br><br>
 
@@ -126,4 +142,11 @@
 		</div>
 
 	</form>
-	<!-- // CREATE -->
+
+	</md-content>	
+
+</div>
+
+
+
+	

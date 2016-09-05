@@ -2,9 +2,11 @@
 
 (function(){
 
-	angular.module('DrinkageApp', ['ngRoute'])
-
-		.config(function($routeProvider){
+	angular.module('DrinkageApp', ['ngRoute', 'ngMaterial'])
+		
+		.config(function($routeProvider, $mdThemingProvider){
+			
+			// ROUTES
 			$routeProvider
 				.when('/venues', {
 					templateUrl: '/app/views/venues/list.html',
@@ -23,6 +25,12 @@
 					controller: 'EditVenueCtrl'
 				})
 				.otherwise('/venues');
+
+			// THEME
+			$mdThemingProvider.theme('default')
+    			.primaryPalette('blue')
+    			.accentPalette('orange');
+
 		});
 
 })();
