@@ -60,6 +60,3 @@ var Venue = require('./server/models/Venue.js')
 
 var venueRoutes = require('./server/routes/venueRoutes.js')
 app.use('/api', venueRoutes);
-
-
-

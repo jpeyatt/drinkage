@@ -9,7 +9,7 @@ var venueSchema = new Schema({
 	state: String,
 	zip: String,
 	website: String,
-	happyHours: [{ 
+	happyHours: [{
 			day: String,
 			startTime: String,
 			endTime: String,
