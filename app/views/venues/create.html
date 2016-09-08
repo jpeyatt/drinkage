@@ -5,11 +5,14 @@
 <form>
 
 	<div layout="row">
-		<md-input-container class="md-block" flex-gt-sm>
+		<md-input-container class="md-block" flex>
 			<md-icon><i class="material-icons">business</i></md-icon>
             <label>Venue Name</label>
             <input ng-model="newVenue.name" ng-required="true">
          </md-input-container>
+	</div>
+
+	<div layout="row">
          <md-input-container class="md-block" flex-gt-sm>
          	<md-icon><i class="material-icons">web</i></md-icon>
             <label>Website</label>
@@ -31,7 +34,6 @@
             <label>Street 2</label>
             <input ng-model="newVenue.street2">
          </md-input-container>
-         
 	</div>
 
 	<div layout="row">
@@ -53,84 +55,94 @@
          </md-input-container>
 	</div>
 
-
-
-
-		<br><br>
-
-		<table class="table table-condensed">
-			<tr>
-				<th>Day</th>
-				<th>Start Time</th>
-				<th>End Time</th>
-				<th>Beer</th>
-				<th>Wine</th>
-				<th>Cocktails</th>
-				<th>Description</th>
-				<th></th>
-			</tr>
-			<tr ng-repeat="day in newHappyHours">
-				<td>{{day.day}}</td>
-				<td>{{day.startTime}}</td>
-				<td>{{day.endTime}}</td>
-				<td>{{day.beer}}</td>
-				<td>{{day.wine}}</td>
-				<td>{{day.cocktails}}</td>
-				<td>{{day.description}}</td>
-				<td><a href="javascript:void(0)" ng-click="removeHappyHour(day)"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-			</tr>
-		</table>
-
-		<p ng-show="newHappyHours.length == 0"><i>There are currently no Happy Hours.</i></p>
-
 		<hr>
 
-		<!-- Add Happy Hours -->
+		<div layout="row">
 
-		<div class="row">
-			<div class="col-md-2">
-				<select name="hhStartTime" class="form-control" ng-model="newHappyHour.day">
-						<option value="" disabled selected>Day</option>
-						<option ng-repeat="d in days" ng-value="d">{{d}}</option>
-				</select>
-			</div>
-			<div class="col-md-2">
-				<select name="hhStartTime" class="form-control" ng-model="newHappyHour.startTime">
-					<option value="" disabled selected>Start Time</option>
-					<option ng-repeat="t in times" ng-value="t.value">{{t.text}}</option>
-				</select>
-			</div>
-			<div class="col-md-2">
-				<select name="hhEndTime" class="form-control" ng-model="newHappyHour.endTime">
-					<option value="" disabled selected>End Time</option>
-					<option ng-repeat="t in times" ng-value="t.value">{{t.text}}</option>
-				</select>
-			</div>
-			<div class="col-md-6">
-				<label for="hhBeer">Beer</label>
-				<input type="checkbox" name="hhBeer" ng-model="newHappyHour.beer">
-				&nbsp;&nbsp;
-				<label for="hhWine">Wine</label>
-				<input type="checkbox" name="hhWine" ng-model="newHappyHour.wine">
-				&nbsp;&nbsp;
-				<label for="hhCocktails">Cocktails</label>
-				<input type="checkbox" name="hhCocktails" ng-model="newHappyHour.cocktails">
-				<br><br>
-			</div>
-		</div>
+			<!-- Add Happy Hour -->
+			<div flex>
+			<h3>Add a Happy Hour</h3>
+				<div layout="row">
 
-		<div class="row">
-			<div class="col-md-9">
-				<textarea class="form-control" ng-model="newHappyHour.description" placeholder="{{hhDescriptionPlaceholder}}"></textarea>
+					<md-input-container class="md-block" flex-gt-sm>
+			            <label>Day</label>
+			            <md-select ng-model="newHappyHour.day">
+			              <md-option ng-repeat="day in days" value="{{day}}">
+			                {{day}}
+			              </md-option>
+			             </md-select>
+		         	</md-input-container>
+
+				</div>
+
+				<div layout="row">
+					<md-input-container class="md-block" flex-gt-sm>
+			            <label>Start Time</label>
+			            <md-select ng-model="newHappyHour.startTime">
+			              <md-option ng-repeat="t in times" value="{{t.value}}">
+			                {{t.text}}
+			              </md-option>
+			             </md-select>
+		         	</md-input-container>
+
+		         	<md-input-container class="md-block" flex-gt-sm>
+			            <label>End Time</label>
+			            <md-select ng-model="newHappyHour.endTime">
+			              <md-option ng-repeat="t in times" value="{{t.value}}">
+			                {{t.text}}
+			              </md-option>
+			             </md-select>
+		         	</md-input-container>
+				</div>
+
+				<div layout="row">
+					<md-input-container class="md-block" flex-gt-sm>
+		         		<md-checkbox ng-model="newHappyHour.beer">
+			         		Beer
+			         	</md-checkbox>
+			         	<md-checkbox ng-model="newHappyHour.wine">
+			         		Wine
+			         	</md-checkbox>
+			         	<md-checkbox ng-model="newHappyHour.cocktails">
+			         		Cocktails
+			         	</md-checkbox>
+		         	</md-input-container>
+				</div>
+
+				<div layout="row">
+					<md-input-container flex class="md-block" rows="5" md-select-on-focus>
+					<label>Description</label>
+						<textarea ng-model="newHappyHour.description"></textarea>
+					</md-input-container>
+				</div>
+
+				<div layout="row">
+					<md-button class="md-primary md-hue-1" ng-click="addNewHappyHour()">Add</md-button>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<button type="button" ng-click="addNewHappyHour()" class="btn btn-success">Add</button>
-			</div>
-		</div>
+			<!-- / Add Happy Hour -->
 
+			<!-- List of Happy Hours -->
+			<div flex>
+				<div layout="row">
+				<div>
+					<p ng-show="newHappyHours.length == 0"><i>There are currently no Happy Hours.</i></p></div>
+					<md-list flex>
+						<md-list-item ng-repeat="day in newHappyHours" class="md-3-line" ng-click="null">
+				          <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
+				          <div class="md-list-item-text" layout="column">
+				            <h3>{{day.day}}</h3>
+				            <h4>{{day.startTime}} to {{day.endTime}}</h4>
+				            <p>Beer and Wine</p>
+				            <md-icon class="md-secondary" ng-click="removeHappyHour(day)"><i class="material-icons">delete</i></md-icon>
+				          </div>
+				    	</md-list-item>
+			        </md-list>
+		        </div>
+	        </div>
+	        <!-- / List of Happy Hours -->
 
-		<!-- // Add Happy Hours -->
-
+        </div>
 		
 
 		<div class="row">

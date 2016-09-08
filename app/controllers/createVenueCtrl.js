@@ -1,18 +1,13 @@
 (function(){
 
 	angular.module('DrinkageApp')
-		.controller('CreateVenueCtrl', ['$scope', 'Venues', '$location', 'Common', function($scope, Venues, $location, Common){
-
+		.controller('CreateVenueCtrl', ['$scope', 'Venues', '$location', 'Common', '$mdDialog', function($scope, Venues, $location, Common, $mdDialog){
+			var thisCtrl = this;
 			$scope.newHappyHours = [];
 			$scope.times = Common.times;
 			$scope.days = Common.days;
 			$scope.states = Common.states;
 			$scope.hhDescriptionPlaceholder = Common.hhDescriptionPlaceholder;
-
-			$scope.addNewHappyHour = function() {
-				$scope.newHappyHours.push($scope.newHappyHour);
-				$scope.newHappyHour = {};
-			};
 
 		    $scope.createVenue = function() {
 		    	var newVenue = $scope.newVenue;
@@ -36,6 +31,28 @@
 			$scope.cancelCreate = function() {
 				$location.path('#/venues');
 		    	$scope.newVenue = {};
+			};
+
+			$scope.addNewHappyHour = function() {
+				$scope.newHappyHours.push($scope.newHappyHour);
+				$scope.newHappyHour = {};
+				$mdDialog.cancel();
+			};
+
+			$scope.addNewHappyHourModal = function(ev) {
+				$mdDialog
+					.show({
+						//controller: function(){return thisCtrl},
+						contentElement: '#addNewHappyHourModal',
+						parent: angular.element(document.body),
+						targetEvent: ev,
+      					clickOutsideToClose:true
+					});
+			};
+
+			$scope.cancelModal = function() {
+				$scope.newHappyHour = {};
+				$mdDialog.cancel();
 			};
 
 		}]);
